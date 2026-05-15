@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Applichem — Building Solution Provider</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue: #1a7abf;
+      --blue-dark: #0e5a8a;
+      --blue-light: #d6ecfa;
+      --green: #3a7d44;
+      --green-mid: #4e9c5e;
+      --white: #ffffff;
+      --off-white: #f4f8fb;
+      --text: #1a2430;
+      --text-muted: #5a6a7a;
+      --border: #dceaf4;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 5%;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 68px;
+    }
+
+    .nav-logo {
+      display: flex; align-items: center; gap: 12px;
+      text-decoration: none;
+    }
+
+    .nav-logo-icon {
+      width: 42px; height: 42px;
+    }
+
+    .nav-logo-text {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: 2px;
+      color: var(--text);
+    }
+
+    .nav-logo-text span { color: var(--blue); }
+
+    .nav-links {
+      display: flex; gap: 32px; list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none; color: var(--text-muted);
+      font-size: 0.9rem; font-weight: 500;
+      letter-spacing: 0.5px;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--blue); }
+
+    .nav-cta {
+      background: var(--blue);
+      color: white !important;
+      padding: 9px 22px;
+      border-radius: 6px;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover { background: var(--blue-dark) !important; color: white !important; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0e3a52 0%, #1a7abf 60%, #3a7d44 100%);
+      display: flex; align-items: center;
+      padding: 120px 5% 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .hero-content {
+      position: relative; z-index: 2;
+      max-width: 680px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: white;
+      font-size: 0.78rem; font-weight: 600;
+      letter-spacing: 2px; text-transform: uppercase;
+      padding: 6px 16px; border-radius: 100px;
+      margin-bottom: 28px;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      line-height: 1.0;
+      color: white;
+      letter-spacing: 3px;
+      margin-bottom: 24px;
+      animation: fadeUp 0.7s 0.1s ease both;
+    }
+
+    .hero h1 span { color: #a8dca8; }
+
+    .hero p {
+      font-size: 1.1rem; color: rgba(255,255,255,0.82);
+      line-height: 1.7; max-width: 520px;
+      margin-bottom: 40px;
+      animation: fadeUp 0.7s 0.2s ease both;
+    }
+
+    .hero-btns {
+      display: flex; gap: 16px; flex-wrap: wrap;
+      animation: fadeUp 0.7s 0.3s ease both;
+    }
+
+    .btn-primary {
+      background: white; color: var(--blue);
+      padding: 14px 32px; border-radius: 8px;
+      font-weight: 600; font-size: 0.95rem;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.2); }
+
+    .btn-outline {
+      border: 2px solid rgba(255,255,255,0.6);
+      color: white; padding: 14px 32px; border-radius: 8px;
+      font-weight: 600; font-size: 0.95rem;
+      text-decoration: none;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .btn-outline:hover { background: rgba(255,255,255,0.1); border-color: white; }
+
+    .hero-shapes {
+      position: absolute; right: 5%; bottom: 10%;
+      opacity: 0.12;
+      animation: fadeUp 1s 0.4s ease both;
+    }
+
+    /* ── STATS ── */
+    .stats {
+      background: var(--blue-dark);
+      padding: 40px 5%;
+      display: flex; justify-content: center; gap: 60px; flex-wrap: wrap;
+    }
+
+    .stat {
+      text-align: center; color: white;
+    }
+
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.8rem; letter-spacing: 2px;
+      color: #a8dca8;
+    }
+
+    .stat-label {
+      font-size: 0.82rem; letter-spacing: 1px;
+      text-transform: uppercase; opacity: 0.8;
+      margin-top: 4px;
+    }
+
+    /* ── SECTION COMMON ── */
+    section { padding: 90px 5%; }
+
+    .section-label {
+      font-size: 0.78rem; font-weight: 600;
+      letter-spacing: 3px; text-transform: uppercase;
+      color: var(--blue); margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.2; color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .section-sub {
+      font-size: 1rem; color: var(--text-muted);
+      max-width: 560px; line-height: 1.7;
+    }
+
+    /* ── SERVICES ── */
+    #services { background: var(--off-white); }
+
+    .services-header {
+      text-align: center; margin-bottom: 60px;
+    }
+
+    .services-header .section-sub { margin: 0 auto; }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+      max-width: 1200px; margin: 0 auto;
+    }
+
+    .service-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 32px 28px;
+      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+      cursor: default;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(26,122,191,0.12);
+      border-color: var(--blue);
+    }
+
+    .service-icon {
+      width: 52px; height: 52px; border-radius: 12px;
+      background: var(--blue-light);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px;
+      font-size: 1.6rem;
+    }
+
+    .service-card h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.15rem; margin-bottom: 10px;
+      color: var(--text);
+    }
+
+    .service-card p {
+      font-size: 0.88rem; color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    /* ── WHY US ── */
+    #why { background: white; }
+
+    .why-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+      align-items: center;
+    }
+
+    .why-visual {
+      background: linear-gradient(135deg, var(--blue-dark), var(--blue));
+      border-radius: 20px;
+      padding: 60px 40px;
+      display: flex; flex-direction: column; gap: 24px;
+    }
+
+    .why-item {
+      display: flex; align-items: flex-start; gap: 16px;
+    }
+
+    .why-dot {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; font-size: 1rem;
+    }
+
+    .why-item h4 { color: white; font-size: 0.95rem; font-weight: 600; margin-bottom: 4px; }
+    .why-item p { color: rgba(255,255,255,0.72); font-size: 0.85rem; line-height: 1.5; }
+
+    .why-text .section-sub { margin-bottom: 36px; }
+
+    .checklist { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+
+    .checklist li {
+      display: flex; align-items: center; gap: 12px;
+      font-size: 0.93rem; color: var(--text);
+    }
+
+    .checklist li::before {
+      content: '✓';
+      width: 24px; height: 24px; border-radius: 50%;
+      background: var(--blue-light); color: var(--blue);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 0.8rem; flex-shrink: 0;
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: linear-gradient(135deg, #0e3a52 0%, #1a7abf 100%);
+      color: white;
+    }
+
+    #contact .section-label { color: #a8dca8; }
+    #contact .section-title { color: white; }
+    #contact .section-sub { color: rgba(255,255,255,0.75); }
+
+    .contact-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+      align-items: start;
+    }
+
+    .contact-info { display: flex; flex-direction: column; gap: 32px; margin-top: 40px; }
+
+    .contact-row {
+      display: flex; align-items: flex-start; gap: 16px;
+    }
+
+    .contact-row-icon {
+      width: 44px; height: 44px; border-radius: 10px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; flex-shrink: 0;
+    }
+
+    .contact-row h4 { font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; opacity: 0.65; margin-bottom: 4px; }
+    .contact-row p { font-size: 0.95rem; opacity: 0.9; line-height: 1.5; }
+
+    .contact-form {
+      background: white; border-radius: 16px;
+      padding: 40px 36px;
+    }
+
+    .contact-form h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.5rem; color: var(--text);
+      margin-bottom: 28px;
+    }
+
+    .form-group { margin-bottom: 20px; }
+
+    .form-group label {
+      display: block; font-size: 0.82rem; font-weight: 600;
+      color: var(--text-muted); margin-bottom: 7px;
+      letter-spacing: 0.5px;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%; padding: 12px 16px;
+      border: 1px solid var(--border);
+      border-radius: 8px; font-family: 'DM Sans', sans-serif;
+      font-size: 0.93rem; color: var(--text);
+      background: var(--off-white);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(26,122,191,0.12);
+      background: white;
+    }
+
+    .form-group textarea { resize: vertical; min-height: 110px; }
+
+    .form-submit {
+      width: 100%; padding: 14px;
+      background: var(--blue); color: white;
+      border: none; border-radius: 8px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem; font-weight: 600;
+      cursor: pointer; letter-spacing: 0.5px;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .form-submit:hover { background: var(--blue-dark); transform: translateY(-1px); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #0a1e2e;
+      color: rgba(255,255,255,0.6);
+      text-align: center;
+      padding: 28px 5%;
+      font-size: 0.85rem;
+    }
+
+    footer strong { color: white; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0; transform: translateY(30px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .why-inner, .contact-inner { grid-template-columns: 1fr; gap: 40px; }
+      .stats { gap: 32px; }
+      .hero-shapes { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <img src="applichem_logo_hq.png" alt="Applichem Logo" style="height:48px; width:auto; object-fit:contain;"/>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">Building Solution Provider · Karachi</div>
+    <h1>Building <span>Solutions</span><br/>You Can Trust</h1>
+    <p>Applichem delivers expert construction repair, waterproofing, structural strengthening, and specialized building solutions across Karachi — with precision and reliability.</p>
+    <div class="hero-btns">
+      <a href="#services" class="btn-primary">Our Services</a>
+      <a href="#contact" class="btn-outline">Get a Free Quote</a>
+    </div>
+  </div>
+
+  <!-- Decorative buildings SVG -->
+  <svg class="hero-shapes" width="400" height="360" viewBox="0 0 400 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="20" y="120" width="60" height="240" fill="white"/>
+    <rect x="30" y="130" width="12" height="12" fill="#1a7abf"/>
+    <rect x="52" y="130" width="12" height="12" fill="#1a7abf"/>
+    <rect x="30" y="152" width="12" height="12" fill="#1a7abf"/>
+    <rect x="52" y="152" width="12" height="12" fill="#1a7abf"/>
+    <rect x="100" y="60" width="80" height="300" fill="white" opacity="0.9"/>
+    <rect x="115" y="80" width="16" height="16" fill="#1a7abf"/>
+    <rect x="145" y="80" width="16" height="16" fill="#1a7abf"/>
+    <rect x="115" y="108" width="16" height="16" fill="#1a7abf"/>
+    <rect x="145" y="108" width="16" height="16" fill="#1a7abf"/>
+    <rect x="200" y="160" width="50" height="200" fill="white" opacity="0.7"/>
+    <rect x="270" y="100" width="70" height="260" fill="white" opacity="0.85"/>
+    <ellipse cx="200" cy="360" rx="280" ry="40" fill="white" opacity="0.06"/>
+  </svg>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat">
+    <div class="stat-num">10+</div>
+    <div class="stat-label">Years Experience</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">500+</div>
+    <div class="stat-label">Projects Completed</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">15+</div>
+    <div class="stat-label">Services Offered</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">100%</div>
+    <div class="stat-label">Client Satisfaction</div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="services-header reveal">
+    <div class="section-label">What We Do</div>
+    <h2 class="section-title">Our Specialized Services</h2>
+    <p class="section-sub">From waterproofing to structural repair, we handle every aspect of building maintenance and restoration.</p>
+  </div>
+
+  <div class="services-grid">
+
+    <div class="service-card reveal">
+      <div class="service-icon">💧</div>
+      <h3>Water Proofing</h3>
+      <p>Comprehensive waterproofing systems for roofs, basements, and walls to prevent water ingress and structural damage.</p>
+    </div>
+
+    <div class="service-card reveal">
+      <div class="service-icon">🔩</div>
+      <h3>Diamond Core Cutting</h3>
+      <p>Precision core cutting for concrete, brick, and masonry using diamond-tipped equipment for clean, accurate results.</p>
+    </div>
+
+    <div class="service-card reveal">
+      <div class="service-icon">🏗️</div>
+      <h3>Rehabilitation Work</h3>
+      <p>Full structural rehabilitation and restoration of deteriorated buildings, restoring integrity and extending lifespan.</p>
+    </div>
+
+    <div class="service-card reveal">
+      <div class="service-icon">🔧</div>
+      <h3>Expansion Joint</h3>
+      <p>Installation and sealing of expansion joints to accommodate thermal movement and prevent cracking in structures.</p>
+    </div>
+
+    <div class="service-card reveal">
+      <div class="service-icon">💉</div>
+      <h3>Crack Injection</h3>
+      <p>Epoxy and polyurethane crack injection to repair structural and non-structural cracks in concrete and masonry.</p>
+    </div>
+
+    <div class="service-card reveal">
+      <div class="service-icon">🧱</div>
+      <h3>Concrete Repair</h3>
+      <p>Spalling, carbonation, and corrosion-related concrete repair using high-performance repair mortars and coatings.</p>
+    </div>
+
+    <div class="service-card reveal">
+      <div class="service-icon">⚙️</div>
+      <h3>Re-Bar Anchoring</h3>
+      <p>Chemical and mechanical anchoring of reinforcing bars into existing concrete structures for added strength.</p>
+    </div>
+
+    <div class="service-card reveal">
+      <div class="service-icon">🏛️</div>
+      <h3>Column Jacketing</h3>
+      <p>Structural strengthening of existing columns using concrete or fiber-reinforced polymer (FRP) jacketing systems.</p>
+    </div>
+
+    <div class="service-card reveal">
+      <div class="service-icon">🪨</div>
+      <h3>False Ceiling</h3>
+      <p>Design and installation of false ceiling systems including grid, gypsum board, and acoustic tile configurations.</p>
+    </div>
+
+    <div class="service-card reveal">
+      <div class="service-icon">🔇</div>
+      <h3>Sound Proofing</h3>
+      <p>Acoustic insulation solutions for offices, residential spaces, and industrial buildings to reduce noise transmission.</p>
+    </div>
+
+    <div class="service-card reveal">
+      <div class="service-icon">☀️</div>
+      <h3>Heat Proofing</h3>
+      <p>Reflective and insulating heat proofing treatments for roofs and walls to reduce indoor temperatures.</p>
+    </div>
+
+    <div class="service-card reveal">
+      <div class="service-icon">🛡️</div>
+      <h3>Epoxy Coating</h3>
+      <p>Heavy-duty epoxy floor and surface coatings for industrial, commercial, and residential applications.</p>
+    </div>
+
+    <div class="service-card reveal">
+      <div class="service-icon">🪣</div>
+      <h3>Grouting</h3>
+      <p>Cementitious and chemical grouting for filling voids, stabilizing foundations, and waterproofing joints.</p>
+    </div>
+
+    <div class="service-card reveal">
+      <div class="service-icon">🏢</div>
+      <h3>Building Jacketing</h3>
+      <p>Full-building structural jacketing to upgrade seismic resistance and load-bearing capacity of existing structures.</p>
+    </div>
+
+    <div class="service-card reveal">
+      <div class="service-icon">⚓</div>
+      <h3>Anchor Bolt Fixing</h3>
+      <p>Precision installation of anchor bolts and fasteners for machinery, equipment, and structural connections.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <div class="why-inner">
+    <div class="why-visual">
+      <div class="why-item">
+        <div class="why-dot">🔬</div>
+        <div>
+          <h4>Certified Materials Only</h4>
+          <p>We use only internationally tested and approved construction chemicals and systems.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-dot">👷</div>
+        <div>
+          <h4>Skilled Technical Team</h4>
+          <p>Our experienced engineers and technicians ensure every project is executed to spec.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-dot">📋</div>
+        <div>
+          <h4>Site Assessment First</h4>
+          <p>Every project begins with a thorough on-site evaluation and written proposal.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-dot">🕐</div>
+        <div>
+          <h4>On-Time Delivery</h4>
+          <p>We respect your timelines and ensure project completion within agreed schedules.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="why-text reveal">
+      <div class="section-label">Why Choose Us</div>
+      <h2 class="section-title">Trusted by Karachi's Builders & Developers</h2>
+      <p class="section-sub">With over a decade in the construction solutions industry, Applichem has earned its reputation through quality work, reliable service, and lasting results.</p>
+      <ul class="checklist">
+        <li>Free initial site consultation</li>
+        <li>Competitive and transparent pricing</li>
+        <li>Warranty on all major works</li>
+        <li>Serving residential & commercial clients</li>
+        <li>Based in Gulistan-e-Johar, Karachi</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="contact-left">
+      <div class="section-label">Reach Out</div>
+      <h2 class="section-title">Let's Talk About Your Project</h2>
+      <p class="section-sub">Have a building problem? We have the solution. Get in touch for a free quote or site visit.</p>
+
+      <div class="contact-info">
+        <div class="contact-row">
+          <div class="contact-row-icon">📍</div>
+          <div>
+            <h4>Office Address</h4>
+            <p>Suit No. 202, Hashmi Residancy,<br/>Gulistan-e-Johar, Block-13, Karachi</p>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-row-icon">🏢</div>
+          <div>
+            <h4>Business Type</h4>
+            <p>Building Solution Provider</p>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-row-icon">⏱️</div>
+          <div>
+            <h4>Working Hours</h4>
+            <p>Mon – Sat: 9:00 AM – 6:00 PM</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form reveal">
+      <h3>Request a Free Quote</h3>
+      <form action="https://formspree.io/f/xlgzqndo" method="POST">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" name="name" placeholder="e.g. Ahmed Khan" required/>
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" name="phone" placeholder="+92 300 0000000" required/>
+        </div>
+        <div class="form-group">
+          <label>Service Required</label>
+          <select name="service" required>
+            <option value="">Select a service...</option>
+            <option>Water Proofing</option>
+            <option>Diamond Core Cutting</option>
+            <option>Rehabilitation Work</option>
+            <option>Expansion Joint</option>
+            <option>Crack Injection</option>
+            <option>Concrete Repair</option>
+            <option>Re-Bar Anchoring</option>
+            <option>Column Jacketing</option>
+            <option>False Ceiling</option>
+            <option>Sound Proofing</option>
+            <option>Heat Proofing</option>
+            <option>Epoxy Coating</option>
+            <option>Grouting</option>
+            <option>Building Jacketing</option>
+            <option>Anchor Bolt Fixing</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Project Details</label>
+          <textarea name="message" placeholder="Briefly describe your project or issue..."></textarea>
+        </div>
+        <button type="submit" class="form-submit">Send Request →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 <strong>Applichem</strong> — Building Solution Provider. Gulistan-e-Johar, Block-13, Karachi.</p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 60);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+
+</script>
+
+</body>
+</html>
