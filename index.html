@@ -254,195 +254,15 @@ layout: null
 
     .button-outline:hover { background: rgba(255, 255, 255, 0.12); }
 
-    .hero-visual {
-      position: relative;
-      min-height: 430px;
-      display: grid;
-      place-items: center;
-    }
-
-    .hero-mark {
-      position: relative;
-      width: min(440px, 100%);
-      height: 350px;
-      filter: drop-shadow(0 30px 42px rgba(0, 0, 0, 0.2));
-    }
-
-    .logo-skyline {
+    .hero-shapes {
       position: absolute;
-      left: 50%;
-      bottom: 58px;
-      width: 420px;
-      max-width: 100%;
-      height: 260px;
-      transform: translateX(-50%);
+      right: 5%;
+      bottom: 10%;
+      width: min(400px, 38vw);
+      height: auto;
+      opacity: 0.12;
+      animation: fadeUp 1s 0.4s ease both;
     }
-
-    .logo-building {
-      position: absolute;
-      bottom: 0;
-      background: linear-gradient(135deg, #0f6d22 0%, #085915 100%);
-      clip-path: polygon(0 0, 72% 0, 100% 24%, 100% 100%, 0 100%);
-    }
-
-    .logo-building::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(132deg, transparent 0 42%, rgba(255, 255, 255, 0.92) 43% 61%, transparent 62%);
-    }
-
-    .logo-building.small {
-      left: 0;
-      width: 90px;
-      height: 130px;
-    }
-
-    .logo-building.tall {
-      left: 150px;
-      width: 132px;
-      height: 255px;
-    }
-
-    .logo-building.right {
-      right: 0;
-      width: 110px;
-      height: 150px;
-    }
-
-    .logo-building.right::after {
-      background: linear-gradient(132deg, transparent 0 36%, rgba(255, 255, 255, 0.92) 37% 58%, transparent 59%);
-    }
-
-    .logo-window {
-      position: absolute;
-      width: 20px;
-      height: 24px;
-      background: #071827;
-      z-index: 1;
-      opacity: 0.92;
-    }
-
-    .logo-building.tall .logo-window:nth-child(1) { top: 42px; right: 34px; }
-    .logo-building.tall .logo-window:nth-child(2) { top: 82px; right: 14px; }
-    .logo-building.tall .logo-window:nth-child(3) { top: 122px; right: 34px; }
-    .logo-building.tall .logo-window:nth-child(4) { top: 162px; right: 14px; }
-    .logo-building.right .logo-window:nth-child(1) { top: 42px; right: 18px; }
-    .logo-building.right .logo-window:nth-child(2) { top: 88px; right: 18px; }
-
-    .logo-tree {
-      position: absolute;
-      bottom: 28px;
-      border: 2px solid rgba(255, 255, 255, 0.72);
-      opacity: 0.95;
-    }
-
-    .logo-tree.round {
-      left: 82px;
-      width: 76px;
-      height: 76px;
-      border-radius: 50%;
-    }
-
-    .logo-tree.round::before,
-    .logo-tree.round::after,
-    .logo-tree.triangle::after {
-      content: "";
-      position: absolute;
-      bottom: -66px;
-      width: 2px;
-      height: 66px;
-      background: rgba(255, 255, 255, 0.6);
-    }
-
-    .logo-tree.round::before { left: 28px; }
-    .logo-tree.round::after { right: 28px; }
-
-    .logo-tree.triangle {
-      right: 108px;
-      bottom: 30px;
-      width: 92px;
-      height: 112px;
-      border: 0;
-      background: rgba(255, 255, 255, 0.9);
-      clip-path: polygon(50% 0, 100% 100%, 0 100%);
-    }
-
-    .logo-tree.triangle::before {
-      content: "";
-      position: absolute;
-      inset: 12px;
-      border: 2px solid rgba(14, 90, 138, 0.18);
-      clip-path: polygon(50% 0, 100% 100%, 0 100%);
-    }
-
-    .logo-tree.triangle::after {
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    .logo-dome {
-      position: absolute;
-      left: 50%;
-      bottom: 0;
-      width: 360px;
-      height: 128px;
-      transform: translateX(-50%);
-      border-radius: 190px 190px 10px 10px;
-      background: linear-gradient(180deg, #075879, #034d68);
-      overflow: hidden;
-      box-shadow: inset 0 12px 28px rgba(255, 255, 255, 0.12);
-    }
-
-    .logo-dome::before {
-      content: "";
-      position: absolute;
-      left: 50%;
-      bottom: -28px;
-      width: 102px;
-      height: 102px;
-      transform: translateX(-50%);
-      border: 8px solid rgba(217, 248, 255, 0.9);
-      border-radius: 50%;
-      box-shadow: inset 0 0 0 8px rgba(217, 248, 255, 0.64);
-    }
-
-    .logo-base {
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 50px;
-      height: 10px;
-      background: #034d68;
-      border-radius: 8px;
-    }
-
-    .floating-proof {
-      position: absolute;
-      display: grid;
-      gap: 4px;
-      width: 178px;
-      padding: 16px 18px;
-      border-radius: 8px;
-      background: white;
-      color: var(--ink);
-      box-shadow: var(--shadow);
-      animation: bob 4.2s ease-in-out infinite;
-    }
-
-    .floating-proof strong {
-      color: var(--blue-dark);
-      font-size: 1.35rem;
-    }
-
-    .floating-proof span {
-      color: var(--muted);
-      font-size: 0.82rem;
-      font-weight: 800;
-    }
-
-    .proof-projects { top: 32px; left: 0; }
-    .proof-years { right: 0; bottom: 34px; animation-delay: 0.7s; }
 
     .scroll-down {
       position: absolute;
@@ -1019,7 +839,7 @@ layout: null
       .nav-brand-text span { display: none; }
       .nav-links { gap: 16px; }
       .hero-inner, .homeowner-grid, .why-inner, .contact-inner { grid-template-columns: 1fr; }
-      .hero-visual { min-height: 340px; }
+      .hero-shapes { width: 320px; opacity: 0.1; }
       .homeowner-cards { grid-template-columns: 1fr; }
       .process-grid { grid-template-columns: repeat(2, 1fr); }
       .stats { grid-template-columns: repeat(2, 1fr); }
@@ -1044,8 +864,7 @@ layout: null
       .nav-links a { white-space: nowrap; font-size: 0.84rem; }
       .nav-cta { padding: 8px 12px; }
       .hero { padding-top: 150px; }
-      .hero-visual { min-height: 260px; }
-      .hero-mark { height: 245px; transform: scale(0.78); transform-origin: center top; }
+      .hero-shapes { display: none; }
       .hero h1 { font-size: clamp(2.15rem, 11vw, 3.45rem); }
       .button { width: 100%; }
       section { padding: 72px 5%; }
@@ -1095,36 +914,22 @@ layout: null
         </div>
       </div>
 
-      <div class="hero-visual" aria-hidden="true">
-        <div class="hero-mark">
-          <div class="logo-skyline">
-            <div class="logo-building small"></div>
-            <div class="logo-building tall">
-              <span class="logo-window"></span>
-              <span class="logo-window"></span>
-              <span class="logo-window"></span>
-              <span class="logo-window"></span>
-            </div>
-            <div class="logo-building right">
-              <span class="logo-window"></span>
-              <span class="logo-window"></span>
-            </div>
-            <div class="logo-tree round"></div>
-            <div class="logo-tree triangle"></div>
-            <div class="logo-dome"></div>
-            <div class="logo-base"></div>
-          </div>
-        </div>
-        <div class="floating-proof proof-projects">
-          <strong>100+</strong>
-          <span>Projects Completed</span>
-        </div>
-        <div class="floating-proof proof-years">
-          <strong>15+</strong>
-          <span>Years Experience</span>
-        </div>
-      </div>
     </div>
+    <svg class="hero-shapes" width="400" height="360" viewBox="0 0 400 360" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <rect x="20" y="120" width="60" height="240" fill="white"/>
+      <rect x="30" y="130" width="12" height="12" fill="#1a7abf"/>
+      <rect x="52" y="130" width="12" height="12" fill="#1a7abf"/>
+      <rect x="30" y="152" width="12" height="12" fill="#1a7abf"/>
+      <rect x="52" y="152" width="12" height="12" fill="#1a7abf"/>
+      <rect x="100" y="60" width="80" height="300" fill="white" opacity="0.9"/>
+      <rect x="115" y="80" width="16" height="16" fill="#1a7abf"/>
+      <rect x="145" y="80" width="16" height="16" fill="#1a7abf"/>
+      <rect x="115" y="108" width="16" height="16" fill="#1a7abf"/>
+      <rect x="145" y="108" width="16" height="16" fill="#1a7abf"/>
+      <rect x="200" y="160" width="50" height="200" fill="white" opacity="0.7"/>
+      <rect x="270" y="100" width="70" height="260" fill="white" opacity="0.85"/>
+      <ellipse cx="200" cy="360" rx="280" ry="40" fill="white" opacity="0.06"/>
+    </svg>
     <a href="#services" class="scroll-down" aria-label="Scroll to services"></a>
   </section>
 
