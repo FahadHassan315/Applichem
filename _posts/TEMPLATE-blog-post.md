@@ -20,7 +20,7 @@ categories: [waterproofing, tips]
 ## Main section heading
 ### Smaller supporting heading
 
-4. Keep paragraphs short and practical. Write for Karachi property owners, builders, contractors, and facility managers.
+4. Keep paragraphs short and practical. Write for property owners, builders, contractors, and facility managers. Mention Karachi only when the post specifically needs a local reference.
 
 5. Add a call-to-action link at the bottom when relevant:
 
