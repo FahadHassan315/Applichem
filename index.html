@@ -262,43 +262,126 @@ layout: null
       animation: fadeUp 0.9s 0.25s ease both;
     }
 
-    .hero-panel {
-      width: min(420px, 100%);
-      padding: 28px;
-      border: 1px solid rgba(255, 255, 255, 0.26);
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.16);
-      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.2);
-      backdrop-filter: blur(10px);
-    }
-
-    .hero-panel-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      height: 250px;
-      align-items: end;
-    }
-
-    .tower {
+    .brand-scene {
       position: relative;
-      border-radius: 8px 8px 0 0;
-      background: rgba(255, 255, 255, 0.94);
-      overflow: hidden;
+      width: min(460px, 100%);
+      height: 360px;
+      filter: drop-shadow(0 28px 34px rgba(0, 0, 0, 0.22));
     }
 
-    .tower::before {
+    .scene-building {
+      position: absolute;
+      bottom: 70px;
+      background: linear-gradient(135deg, #0f7a27 0%, #075a16 100%);
+      clip-path: polygon(0 0, 72% 0, 100% 22%, 100% 100%, 0 100%);
+    }
+
+    .scene-building::after {
       content: "";
       position: absolute;
-      inset: 18px 14px;
-      background-image: linear-gradient(90deg, var(--blue) 9px, transparent 9px), linear-gradient(var(--blue) 9px, transparent 9px);
-      background-size: 28px 28px;
-      opacity: 0.72;
+      inset: 0;
+      background: linear-gradient(132deg, transparent 0 41%, rgba(255,255,255,0.96) 42% 59%, transparent 60%);
     }
 
-    .tower:nth-child(1) { height: 64%; }
-    .tower:nth-child(2) { height: 92%; background: white; }
-    .tower:nth-child(3) { height: 76%; opacity: 0.9; }
+    .scene-building.left {
+      left: 14px;
+      width: 92px;
+      height: 120px;
+    }
+
+    .scene-building.center {
+      left: 170px;
+      width: 136px;
+      height: 252px;
+    }
+
+    .scene-building.right {
+      right: 18px;
+      width: 108px;
+      height: 150px;
+    }
+
+    .scene-window {
+      position: absolute;
+      z-index: 1;
+      width: 22px;
+      height: 26px;
+      background: #071827;
+      opacity: 0.92;
+    }
+
+    .scene-building.center .scene-window:nth-child(1) { top: 60px; right: 34px; }
+    .scene-building.center .scene-window:nth-child(2) { top: 110px; right: 18px; }
+    .scene-building.right .scene-window:nth-child(1) { top: 44px; right: 20px; }
+    .scene-building.right .scene-window:nth-child(2) { top: 92px; right: 20px; }
+
+    .scene-tree {
+      position: absolute;
+      bottom: 92px;
+    }
+
+    .scene-tree.round {
+      left: 96px;
+      width: 86px;
+      height: 86px;
+      border: 3px solid rgba(255, 255, 255, 0.88);
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .scene-tree.triangle {
+      right: 108px;
+      width: 92px;
+      height: 122px;
+      background: rgba(255, 255, 255, 0.92);
+      clip-path: polygon(50% 0, 100% 100%, 0 100%);
+    }
+
+    .scene-tree::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -78px;
+      width: 3px;
+      height: 78px;
+      transform: translateX(-50%);
+      background: rgba(255, 255, 255, 0.68);
+    }
+
+    .scene-dome {
+      position: absolute;
+      left: 50%;
+      bottom: 42px;
+      width: 390px;
+      height: 136px;
+      transform: translateX(-50%);
+      border-radius: 200px 200px 8px 8px;
+      background: linear-gradient(180deg, #076481 0%, #034d68 100%);
+      box-shadow: inset 0 12px 24px rgba(255, 255, 255, 0.14);
+    }
+
+    .scene-dome::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -26px;
+      width: 98px;
+      height: 98px;
+      transform: translateX(-50%);
+      border-radius: 50%;
+      border: 7px solid rgba(218, 250, 255, 0.92);
+      box-shadow: inset 0 0 0 7px rgba(218, 250, 255, 0.58);
+    }
+
+    .scene-base {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 38px;
+      height: 12px;
+      border-radius: 8px;
+      background: #034d68;
+    }
 
     .floating-proof {
       position: absolute;
@@ -978,12 +1061,20 @@ layout: null
       </div>
 
       <div class="hero-visual" aria-hidden="true">
-        <div class="hero-panel">
-          <div class="hero-panel-grid">
-            <div class="tower"></div>
-            <div class="tower"></div>
-            <div class="tower"></div>
+        <div class="brand-scene">
+          <div class="scene-building left"></div>
+          <div class="scene-building center">
+            <span class="scene-window"></span>
+            <span class="scene-window"></span>
           </div>
+          <div class="scene-building right">
+            <span class="scene-window"></span>
+            <span class="scene-window"></span>
+          </div>
+          <div class="scene-tree round"></div>
+          <div class="scene-tree triangle"></div>
+          <div class="scene-dome"></div>
+          <div class="scene-base"></div>
         </div>
         <div class="floating-proof proof-projects">
           <strong>100+</strong>
