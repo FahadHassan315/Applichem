@@ -204,9 +204,9 @@ layout: null
 
     .hero h1 {
       font-family: "DM Sans", Arial, sans-serif;
-      font-size: clamp(2.35rem, 5.2vw, 4.75rem);
+      font-size: clamp(2.25rem, 4.6vw, 4.2rem);
       line-height: 1.08;
-      max-width: 760px;
+      max-width: 680px;
       margin-bottom: 24px;
       font-weight: 800;
     }
@@ -254,15 +254,78 @@ layout: null
 
     .button-outline:hover { background: rgba(255, 255, 255, 0.12); }
 
-    .hero-shapes {
-      position: absolute;
-      right: 5%;
-      bottom: 10%;
-      width: min(400px, 38vw);
-      height: auto;
-      opacity: 0.12;
-      animation: fadeUp 1s 0.4s ease both;
+    .hero-visual {
+      position: relative;
+      min-height: 430px;
+      display: grid;
+      place-items: center;
+      animation: fadeUp 0.9s 0.25s ease both;
     }
+
+    .hero-panel {
+      width: min(420px, 100%);
+      padding: 28px;
+      border: 1px solid rgba(255, 255, 255, 0.26);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.16);
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-panel-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      height: 250px;
+      align-items: end;
+    }
+
+    .tower {
+      position: relative;
+      border-radius: 8px 8px 0 0;
+      background: rgba(255, 255, 255, 0.94);
+      overflow: hidden;
+    }
+
+    .tower::before {
+      content: "";
+      position: absolute;
+      inset: 18px 14px;
+      background-image: linear-gradient(90deg, var(--blue) 9px, transparent 9px), linear-gradient(var(--blue) 9px, transparent 9px);
+      background-size: 28px 28px;
+      opacity: 0.72;
+    }
+
+    .tower:nth-child(1) { height: 64%; }
+    .tower:nth-child(2) { height: 92%; background: white; }
+    .tower:nth-child(3) { height: 76%; opacity: 0.9; }
+
+    .floating-proof {
+      position: absolute;
+      display: grid;
+      gap: 4px;
+      width: 178px;
+      padding: 16px 18px;
+      border-radius: 8px;
+      background: white;
+      color: var(--ink);
+      box-shadow: var(--shadow);
+      animation: bob 4.2s ease-in-out infinite;
+    }
+
+    .floating-proof strong {
+      color: var(--blue-dark);
+      font-size: 1.35rem;
+    }
+
+    .floating-proof span {
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 800;
+    }
+
+    .proof-projects { top: 32px; left: 0; }
+    .proof-years { right: 0; bottom: 34px; animation-delay: 0.7s; }
 
     .scroll-down {
       position: absolute;
@@ -839,7 +902,7 @@ layout: null
       .nav-brand-text span { display: none; }
       .nav-links { gap: 16px; }
       .hero-inner, .homeowner-grid, .why-inner, .contact-inner { grid-template-columns: 1fr; }
-      .hero-shapes { width: 320px; opacity: 0.1; }
+      .hero-visual { min-height: 340px; }
       .homeowner-cards { grid-template-columns: 1fr; }
       .process-grid { grid-template-columns: repeat(2, 1fr); }
       .stats { grid-template-columns: repeat(2, 1fr); }
@@ -864,7 +927,7 @@ layout: null
       .nav-links a { white-space: nowrap; font-size: 0.84rem; }
       .nav-cta { padding: 8px 12px; }
       .hero { padding-top: 150px; }
-      .hero-shapes { display: none; }
+      .hero-visual { display: none; }
       .hero h1 { font-size: clamp(2.15rem, 11vw, 3.45rem); }
       .button { width: 100%; }
       section { padding: 72px 5%; }
@@ -914,22 +977,25 @@ layout: null
         </div>
       </div>
 
+      <div class="hero-visual" aria-hidden="true">
+        <div class="hero-panel">
+          <div class="hero-panel-grid">
+            <div class="tower"></div>
+            <div class="tower"></div>
+            <div class="tower"></div>
+          </div>
+        </div>
+        <div class="floating-proof proof-projects">
+          <strong>100+</strong>
+          <span>Projects Completed</span>
+        </div>
+        <div class="floating-proof proof-years">
+          <strong>15+</strong>
+          <span>Years Experience</span>
+        </div>
+      </div>
     </div>
-    <svg class="hero-shapes" width="400" height="360" viewBox="0 0 400 360" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <rect x="20" y="120" width="60" height="240" fill="white"/>
-      <rect x="30" y="130" width="12" height="12" fill="#1a7abf"/>
-      <rect x="52" y="130" width="12" height="12" fill="#1a7abf"/>
-      <rect x="30" y="152" width="12" height="12" fill="#1a7abf"/>
-      <rect x="52" y="152" width="12" height="12" fill="#1a7abf"/>
-      <rect x="100" y="60" width="80" height="300" fill="white" opacity="0.9"/>
-      <rect x="115" y="80" width="16" height="16" fill="#1a7abf"/>
-      <rect x="145" y="80" width="16" height="16" fill="#1a7abf"/>
-      <rect x="115" y="108" width="16" height="16" fill="#1a7abf"/>
-      <rect x="145" y="108" width="16" height="16" fill="#1a7abf"/>
-      <rect x="200" y="160" width="50" height="200" fill="white" opacity="0.7"/>
-      <rect x="270" y="100" width="70" height="260" fill="white" opacity="0.85"/>
-      <ellipse cx="200" cy="360" rx="280" ry="40" fill="white" opacity="0.06"/>
-    </svg>
+
     <a href="#services" class="scroll-down" aria-label="Scroll to services"></a>
   </section>
 
