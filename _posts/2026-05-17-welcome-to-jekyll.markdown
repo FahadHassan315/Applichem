@@ -1,29 +1,25 @@
 ---
 layout: post
-title:  "Welcome to Jekyll!"
-date:   2026-05-17 22:25:21 +0500
-categories: jekyll update
+title: "Applichem Building Solutions for Karachi Projects"
+date: 2026-05-17 22:25:21 +0500
+description: "An introduction to Applichem's building repair, waterproofing, strengthening, coating, and protection services in Karachi."
+categories: [company, services]
 ---
-You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
 
-Jekyll requires blog post files to be named according to the following format:
+Applichem is a building solution provider based in Gulistan-e-Johar, Block-13, Karachi. We support property owners, contractors, builders, and facility teams with practical repair and protection services for residential, commercial, and industrial spaces.
 
-`YEAR-MONTH-DAY-title.MARKUP`
+Our work focuses on diagnosing the site issue first, then applying the right system for the building condition. That matters in Karachi, where roofs, slabs, joints, walls, and exposed concrete face heat, humidity, rain, and coastal air.
 
-Where `YEAR` is a four-digit number, `MONTH` and `DAY` are both two-digit numbers, and `MARKUP` is the file extension representing the format used in the file. After that, include the necessary front matter. Take a look at the source for this post to get an idea about how it works.
+## What Applichem handles
 
-Jekyll also offers powerful support for code snippets:
+Our services include waterproofing, concrete repair, crack injection, rehabilitation, expansion joints, epoxy coating, grouting, re-bar anchoring, column jacketing, building jacketing, heat proofing, sound proofing, false ceiling work, anchor bolt fixing, and diamond core cutting.
 
-{% highlight ruby %}
-def print_hi(name)
-  puts "Hi, #{name}"
-end
-print_hi('Tom')
-#=> prints 'Hi, Tom' to STDOUT.
-{% endhighlight %}
+## Why site assessment matters
 
-Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
+A leak may come from a roof crack, failed joint, weak drain detail, damaged coating, or hidden seepage path. Treating the symptom without checking the cause can lead to repeated repairs. Applichem starts with an assessment so the proposed work is matched to the actual site condition.
 
-[jekyll-docs]: https://jekyllrb.com/docs/home
-[jekyll-gh]:   https://github.com/jekyll/jekyll
-[jekyll-talk]: https://talk.jekyllrb.com/
+## Talk to Applichem
+
+If your building needs waterproofing, repair, strengthening, coating, or a specialist construction solution, share your site details and our team will guide the next step.
+
+[Get a Free Quote](/Applichem/#contact)
