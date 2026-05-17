@@ -261,43 +261,161 @@ layout: null
       place-items: center;
     }
 
-    .hero-panel {
-      width: min(420px, 100%);
-      padding: 28px;
-      border: 1px solid rgba(255, 255, 255, 0.26);
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.13);
-      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.18);
-      backdrop-filter: blur(10px);
-    }
-
-    .hero-panel-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      height: 250px;
-      align-items: end;
-    }
-
-    .tower {
+    .hero-mark {
       position: relative;
-      border-radius: 8px 8px 0 0;
-      background: rgba(255, 255, 255, 0.92);
-      overflow: hidden;
+      width: min(440px, 100%);
+      height: 350px;
+      filter: drop-shadow(0 30px 42px rgba(0, 0, 0, 0.2));
     }
 
-    .tower::before {
+    .logo-skyline {
+      position: absolute;
+      left: 50%;
+      bottom: 58px;
+      width: 420px;
+      max-width: 100%;
+      height: 260px;
+      transform: translateX(-50%);
+    }
+
+    .logo-building {
+      position: absolute;
+      bottom: 0;
+      background: linear-gradient(135deg, #0f6d22 0%, #085915 100%);
+      clip-path: polygon(0 0, 72% 0, 100% 24%, 100% 100%, 0 100%);
+    }
+
+    .logo-building::after {
       content: "";
       position: absolute;
-      inset: 18px 14px;
-      background-image: linear-gradient(90deg, var(--blue) 9px, transparent 9px), linear-gradient(var(--blue) 9px, transparent 9px);
-      background-size: 28px 28px;
-      opacity: 0.72;
+      inset: 0;
+      background: linear-gradient(132deg, transparent 0 42%, rgba(255, 255, 255, 0.92) 43% 61%, transparent 62%);
     }
 
-    .tower:nth-child(1) { height: 64%; }
-    .tower:nth-child(2) { height: 92%; background: rgba(255, 255, 255, 0.98); }
-    .tower:nth-child(3) { height: 76%; opacity: 0.86; }
+    .logo-building.small {
+      left: 0;
+      width: 90px;
+      height: 130px;
+    }
+
+    .logo-building.tall {
+      left: 150px;
+      width: 132px;
+      height: 255px;
+    }
+
+    .logo-building.right {
+      right: 0;
+      width: 110px;
+      height: 150px;
+    }
+
+    .logo-building.right::after {
+      background: linear-gradient(132deg, transparent 0 36%, rgba(255, 255, 255, 0.92) 37% 58%, transparent 59%);
+    }
+
+    .logo-window {
+      position: absolute;
+      width: 20px;
+      height: 24px;
+      background: #071827;
+      z-index: 1;
+      opacity: 0.92;
+    }
+
+    .logo-building.tall .logo-window:nth-child(1) { top: 42px; right: 34px; }
+    .logo-building.tall .logo-window:nth-child(2) { top: 82px; right: 14px; }
+    .logo-building.tall .logo-window:nth-child(3) { top: 122px; right: 34px; }
+    .logo-building.tall .logo-window:nth-child(4) { top: 162px; right: 14px; }
+    .logo-building.right .logo-window:nth-child(1) { top: 42px; right: 18px; }
+    .logo-building.right .logo-window:nth-child(2) { top: 88px; right: 18px; }
+
+    .logo-tree {
+      position: absolute;
+      bottom: 28px;
+      border: 2px solid rgba(255, 255, 255, 0.72);
+      opacity: 0.95;
+    }
+
+    .logo-tree.round {
+      left: 82px;
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+    }
+
+    .logo-tree.round::before,
+    .logo-tree.round::after,
+    .logo-tree.triangle::after {
+      content: "";
+      position: absolute;
+      bottom: -66px;
+      width: 2px;
+      height: 66px;
+      background: rgba(255, 255, 255, 0.6);
+    }
+
+    .logo-tree.round::before { left: 28px; }
+    .logo-tree.round::after { right: 28px; }
+
+    .logo-tree.triangle {
+      right: 108px;
+      bottom: 30px;
+      width: 92px;
+      height: 112px;
+      border: 0;
+      background: rgba(255, 255, 255, 0.9);
+      clip-path: polygon(50% 0, 100% 100%, 0 100%);
+    }
+
+    .logo-tree.triangle::before {
+      content: "";
+      position: absolute;
+      inset: 12px;
+      border: 2px solid rgba(14, 90, 138, 0.18);
+      clip-path: polygon(50% 0, 100% 100%, 0 100%);
+    }
+
+    .logo-tree.triangle::after {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .logo-dome {
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      width: 360px;
+      height: 128px;
+      transform: translateX(-50%);
+      border-radius: 190px 190px 10px 10px;
+      background: linear-gradient(180deg, #075879, #034d68);
+      overflow: hidden;
+      box-shadow: inset 0 12px 28px rgba(255, 255, 255, 0.12);
+    }
+
+    .logo-dome::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -28px;
+      width: 102px;
+      height: 102px;
+      transform: translateX(-50%);
+      border: 8px solid rgba(217, 248, 255, 0.9);
+      border-radius: 50%;
+      box-shadow: inset 0 0 0 8px rgba(217, 248, 255, 0.64);
+    }
+
+    .logo-base {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 50px;
+      height: 10px;
+      background: #034d68;
+      border-radius: 8px;
+    }
 
     .floating-proof {
       position: absolute;
@@ -406,6 +524,88 @@ layout: null
       font-size: 1rem;
       line-height: 1.75;
     }
+
+    #homeowners { background: white; }
+
+    .homeowner-grid {
+      width: min(1120px, 100%);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 26px;
+      align-items: stretch;
+    }
+
+    .homeowner-intro {
+      padding: 32px;
+      border-radius: 8px;
+      color: white;
+      background: linear-gradient(135deg, var(--blue-dark), var(--blue));
+      box-shadow: var(--shadow);
+    }
+
+    .homeowner-intro h2 {
+      font-family: "DM Sans", Arial, sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      line-height: 1.12;
+      margin-bottom: 14px;
+    }
+
+    .homeowner-intro p {
+      color: rgba(255, 255, 255, 0.84);
+      line-height: 1.72;
+      margin-bottom: 22px;
+    }
+
+    .homeowner-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .homeowner-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 300px;
+      padding: 26px;
+      border: 1px solid var(--line);
+      border-top: 5px solid var(--green);
+      border-radius: 8px;
+      background: var(--paper);
+    }
+
+    .homeowner-card:first-child { border-top-color: var(--blue); }
+
+    .homeowner-card h3 {
+      color: var(--blue-dark);
+      font-size: 1.35rem;
+      margin-bottom: 10px;
+    }
+
+    .homeowner-card p {
+      color: var(--muted);
+      line-height: 1.65;
+      margin-bottom: 18px;
+    }
+
+    .homeowner-card ul {
+      display: grid;
+      gap: 8px;
+      margin: 0 0 22px;
+      padding-left: 18px;
+      color: var(--ink);
+      font-weight: 700;
+      font-size: 0.92rem;
+    }
+
+    .homeowner-card .button {
+      margin-top: auto;
+      color: white;
+      background: var(--blue);
+      width: max-content;
+    }
+
+    .homeowner-card:nth-child(2) .button { background: var(--green); }
 
     #services { background: var(--paper); }
 
@@ -818,8 +1018,9 @@ layout: null
       nav { height: auto; min-height: 78px; padding: 10px 4%; }
       .nav-brand-text span { display: none; }
       .nav-links { gap: 16px; }
-      .hero-inner, .why-inner, .contact-inner { grid-template-columns: 1fr; }
+      .hero-inner, .homeowner-grid, .why-inner, .contact-inner { grid-template-columns: 1fr; }
       .hero-visual { min-height: 340px; }
+      .homeowner-cards { grid-template-columns: 1fr; }
       .process-grid { grid-template-columns: repeat(2, 1fr); }
       .stats { grid-template-columns: repeat(2, 1fr); }
       .stat:nth-child(2) { border-right: 0; }
@@ -843,7 +1044,8 @@ layout: null
       .nav-links a { white-space: nowrap; font-size: 0.84rem; }
       .nav-cta { padding: 8px 12px; }
       .hero { padding-top: 150px; }
-      .hero-visual { display: none; }
+      .hero-visual { min-height: 260px; }
+      .hero-mark { height: 245px; transform: scale(0.78); transform-origin: center top; }
       .hero h1 { font-size: clamp(2.15rem, 11vw, 3.45rem); }
       .button { width: 100%; }
       section { padding: 72px 5%; }
@@ -872,6 +1074,7 @@ layout: null
     </a>
 
     <ul class="nav-links">
+      <li><a href="#homeowners">Home Solutions</a></li>
       <li><a href="#services">Services</a></li>
       <li><a href="#process">Process</a></li>
       <li><a href="#why">Why Us</a></li>
@@ -893,11 +1096,23 @@ layout: null
       </div>
 
       <div class="hero-visual" aria-hidden="true">
-        <div class="hero-panel">
-          <div class="hero-panel-grid">
-            <div class="tower"></div>
-            <div class="tower"></div>
-            <div class="tower"></div>
+        <div class="hero-mark">
+          <div class="logo-skyline">
+            <div class="logo-building small"></div>
+            <div class="logo-building tall">
+              <span class="logo-window"></span>
+              <span class="logo-window"></span>
+              <span class="logo-window"></span>
+              <span class="logo-window"></span>
+            </div>
+            <div class="logo-building right">
+              <span class="logo-window"></span>
+              <span class="logo-window"></span>
+            </div>
+            <div class="logo-tree round"></div>
+            <div class="logo-tree triangle"></div>
+            <div class="logo-dome"></div>
+            <div class="logo-base"></div>
           </div>
         </div>
         <div class="floating-proof proof-projects">
@@ -920,11 +1135,46 @@ layout: null
     <div class="stat"><strong>Fast</strong><span>Site Response</span></div>
   </div>
 
+  <section id="homeowners">
+    <div class="homeowner-grid">
+      <div class="homeowner-intro reveal">
+        <div class="section-label">For Home Owners</div>
+        <h2>Quick help for roof heat and leakage problems.</h2>
+        <p>Waterproofing and heat proofing are the services most homeowners ask for first. This section gives them a direct route to the right quote while the full Applichem service range stays available below.</p>
+        <a href="https://wa.me/923003974696" class="button button-primary">Message for Home Quote</a>
+      </div>
+
+      <div class="homeowner-cards">
+        <article class="homeowner-card reveal">
+          <h3>Waterproofing for Homes</h3>
+          <p>For roof seepage, bathroom leakage, damp walls, tank leakage, and rainwater entry points that need proper diagnosis before coating.</p>
+          <ul>
+            <li>Roof slab and parapet treatment</li>
+            <li>Bathroom and water tank leakage</li>
+            <li>Crack, joint, and drain detailing</li>
+          </ul>
+          <a href="#contact" class="button">Get Waterproofing Quote</a>
+        </article>
+
+        <article class="homeowner-card reveal">
+          <h3>Heat Proofing for Homes</h3>
+          <p>For hot roofs and uncomfortable upper floors where reflective and insulating treatments can reduce heat gain and improve comfort.</p>
+          <ul>
+            <li>Roof heat reduction systems</li>
+            <li>Comfort-focused surface treatments</li>
+            <li>Practical options for occupied homes</li>
+          </ul>
+          <a href="#contact" class="button">Get Heat Proofing Quote</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <section id="services">
     <div class="section-head reveal">
       <div class="section-label">What We Do</div>
       <h2 class="section-title">Specialized building repair and protection services</h2>
-      <p class="section-sub">From roof waterproofing to structural strengthening, our team diagnoses the cause first and recommends practical systems built for demanding weather, usage, and site conditions.</p>
+      <p class="section-sub">Alongside homeowner waterproofing and heat proofing, Applichem delivers a wider set of specialized repair, strengthening, coating, anchoring, grouting, and cutting services for commercial and industrial needs.</p>
     </div>
 
     <div class="services-grid">
