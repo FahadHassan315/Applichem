@@ -165,6 +165,7 @@ layout: null
     }
 
     .hero-inner {
+      overflow: visible;
       width: min(1120px, 100%);
       margin: 0 auto;
       display: grid;
@@ -1060,23 +1061,23 @@ layout: null
         </div>
       </div>
 
-      <div class="hero-visual" aria-hidden="true">
-        <div class="brand-scene" style="display:flex; align-items:center; justify-content:center; background:transparent; filter:none;">
-            <img
-              src="{{ site.baseurl }}/Front_Image.jpg"
-              alt="Applichem building solutions"
-              style="width: 380px; max-width: 90%; border-radius: 12px; object-fit: cover; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.3));"
-            />
-          </div>
-          <div class="scene-building right">
-            <span class="scene-window"></span>
-            <span class="scene-window"></span>
-          </div>
-          <div class="scene-tree round"></div>
-          <div class="scene-tree triangle"></div>
-          <div class="scene-dome"></div>
-          <div class="scene-base"></div>
-        </div>
+     <div class="hero-visual" aria-hidden="true" style="overflow: visible; position: relative; min-height: 430px; display: flex; align-items: flex-end; justify-content: flex-end;">
+        <img
+          src="{{ site.baseurl }}/Front_Image.jpg"
+          alt="Applichem building solutions"
+          style="
+            position: absolute;
+            right: -5%;
+            bottom: 0;
+            height: 90%;
+            width: auto;
+            max-width: none;
+            object-fit: cover;
+            object-position: left center;
+            border-radius: 16px 0 0 16px;
+            filter: drop-shadow(-20px 20px 40px rgba(0,0,0,0.35));
+          "
+        />
         <div class="floating-proof proof-projects">
           <strong>100+</strong>
           <span>Projects Completed</span>
@@ -1086,7 +1087,6 @@ layout: null
           <span>Years Experience</span>
         </div>
       </div>
-    </div>
 
     <a href="#services" class="scroll-down" aria-label="Scroll to services"></a>
   </section>
